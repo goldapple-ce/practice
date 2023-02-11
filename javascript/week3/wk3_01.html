@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <style>
+        .done{
+            color:red;
+        }
+    </style>
+
+</head>
+<body>
+    <h1 id="title">오늘의 할 일</h1>
+    <ul id="list">
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+    </ul>
+</body>
+
+<script>
+    $(document).ready(function(){
+        $('#list').children().each(function(index,item){
+            let input = prompt(index + "번째 할일을 입력하세요");
+            $(item).text(input);
+        });
+
+        $('#list > li').click(function(){
+            $(this).toggleClass('done')
+        });
+
+        // for(let i in list){
+        //     $('li').eq(i).text(list[i]);
+        // }
+    });
+
+</script>
+
+</html>
+

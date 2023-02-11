@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <title>weatherApplication</title>
+    <style>
+        body{
+            background: linear-gradient(-30deg,#0AB8DE,#33AADD,#A6D2E0);
+        }
+        p{
+            color:#FFFF;
+            line-height: 0.4;
+            font-size: 17px;
+        }
+        span{
+            color:#FFFF;
+            font-size: 17px;
+        }
+        #current_temp{
+            font-size: 60px;
+            margin:0px;
+            padding: 30px;
+        }
+
+        .info_box{
+            margin: 20px;
+            padding: 15px;
+            border-radius: 25px;
+            background-color: rgba(0,0,0,0.35);
+        }
+        #more_info img{
+            width : 25px
+        }
+        #more_info div{
+            display: inline-block;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        #day{
+            float : right;
+            margin-top: -5px;
+        }
+        #forecast_info div{
+            display: inline-block;
+            margin-right: 7%;
+            margin-left: 7%;
+        }
+
+        #forecast_info div p{
+            left:50%;
+        }
+
+        #forecast_info img{
+            width: 40px;
+        }
+
+        .oneLine p,
+        .oneLine span{
+            display: inline;
+            margin-left: 7px;
+            margin-right: 7px;
+        }
+        .region{
+            color:#FFFF;
+            font-size: 15px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header style="padding: 27px;">
+        <img src="./icon/pin.png" width="25px" style="float: left;padding-right: 10px;"></img>
+        <div >
+            <p id="region" style="display : inline">Seoul</p>
+            <img id="region_button" style="display : inline; width:15px;margin-left:10px;" src="./icon/downIcon.png"></img>
+        </div>
+        <div class="region" style="float: left;">
+            <div>Seoul</div>
+            <div>Incheon</div>
+            <div>Gyeonggi</div>
+            <div>Busan</div>
+            <div>Deagu</div>
+            <div>Deajeon</div>
+        </div>
+    </header>
+    <center>
+        <img id="cloth" width="160px"></img>
+        <div id="temp">
+            <p id="current_temp">0º</p>
+            <div style="padding-bottom:5px">
+                <p>Parcipitations</p>
+                <p id="maxmin_temp">Max.: 0º&nbsp;&nbsp;&nbsp;Min.: 0º</p>
+            </div>
+        </div>
+
+        <div id="more_info" class="info_box">
+            <div>
+                <img id = "humidity_icon" src="./icon/drop (1).png" ></img>
+                <span id="humidity">0%</span>
+            </div>
+            <div>
+                <img id = "dust_icon" src="./icon/mask (1).png"></img>
+                <span id="dust">0 ㎍/㎥</span>
+            </div>
+            <div>
+                <img src="./icon/wind (1).png" ></img>
+                <span id="wind">0 m/s</span>
+            </div>
+        </div>
+    </center>
+    <div class="info_box">
+        <div class="oneLine">
+            <p>Today</p>
+            <span id = "day">Month.day</span>
+        </div>
+        <center>
+        <div id="forecast_info" style="margin-top:20px;margin-bottom: 10px;">
+        </div>
+        </center>
+    </div>
+    
+</body>
+
+
+<script>
+    $(function(){
+        const weather_display = (lat,lon,region) =>{
+            let url = 'https://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon+'&units=metric&appid=0ab593e3259061d3bd42052d2dbaff09';
+            $.getJSON(url,function(data){
+                console.log(data);
+                let temp = parseInt(data.main.temp);
+                if(temp<12){
+                    $('#cloth').attr('src','./clothImage/couplewinter.png');
+                }else if(12<=temp && temp <22){
+                    $('#cloth').attr('src','./clothImage/couplefall.png');
+                }else{
+                    $('#cloth').attr('src','./clothImage/couplesummer.png');
+                }
+                $('#current_temp').text(temp+"º");
+                $('#maxmin_temp').text('Max.: '+parseInt(data.main.temp_max)+'º Min.: '+parseInt(data.main.temp_min)+'º')
+                $('#humidity').text(data.main.humidity + '%');
+                $('#wind').text(data.wind.speed + ' m/s');
+            });
+
+            let urlF = 'https://api.openweathermap.org/data/2.5/forecast?lat='+lat+'&lon='+lon+'&units=metric&appid=0ab593e3259061d3bd42052d2dbaff09';
+            $.getJSON(urlF,function(data){
+                console.log(data);
+                let rain_check = false;
+                $('#forecast_info').empty();
+                for(let i =0;i<4;i++){
+                    let dt = data.list[i].dt;
+                    let weatherId = data.list[i].weather.id;
+
+                    let dom = $('<div></div>');
+                    dom.append('<p> ' +parseInt(data.list[i].main.temp) + 'º</p>');
+                    dom.append('<img src=' + 'http://openweathermap.org/img/wn/'+ data.list[i].weather[0].icon +'@2x.png'+'></img>');
+                    dom.append('<p> ' + moment(dt*1000).format('HH:mm') + '</p>');
+
+                    $('#forecast_info').append(dom);
+                    if (weatherId >=500 && weatherId < 600){
+                        rain_check = true;
+                    }
+                }
+                if (rain_check){
+                    $('#humidity_icon').attr('src','./icon/drop.png');
+                    setInterval(function(){
+                        $('#humidity_icon').animate({'margin-bottom':-5},100).animate({'margin-bottom':0},100);
+                    },1000);
+                }
+            });
+
+            const serviceKey = 'GDDtYIaih6uCpntF5rin1iuq8pIZQ3gc64em73yt1%2F0NqvYknT07WAGJjs2RiK1vmYpF1YtUzJcrJGfgoNlZ2g%3D%3D';
+            const region_list = {Seoul:'서울',Incheon:'인천',Gyeonggi:'경기',Busan:'부산',Deagu:'대구',Deajeon:'대전'};
+            let urlD = 'http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty?sidoName='+region_list[region]+'&pageNo=1&numOfRows=100&returnType=json&serviceKey='+serviceKey+'&ver=1.0';
+            $.getJSON(urlD, function(data){
+                console.log(data);
+                let airpollution = data.response.body.items[0].pm10Value;
+                $('#dust').text(airpollution+' ㎍/㎥');
+                if(airpollution > 35){
+                    $('#dust_icon').attr('src','./icon/mask.png');
+                    setInterval(function(){
+                        $('#dust_icon').animate({'margin-bottom':-5},100).animate({'margin-bottom':0},100);
+                    },1000);
+                }
+            });
+        }
+
+        let today = new Date();
+        let hour = today.getHours();
+        let lat = 37.5666;
+        let lon = 126.9784;
+        let region = 'Seoul';
+        if(7 > hour || 20 < hour){
+            $('body').css('background','linear-gradient(-30deg,#0B42AB 5%,#0B172E 40%,#121213)');
+        }
+
+        $('#day').text(today.getMonth()+1 + '.' + today.getDate());
+        weather_display(lat,lon,region);
+
+
+        $('#region_button').click(function(){
+            $('.region').slideToggle(300);
+            if($('#cloth').hasClass("on")){
+                $('#cloth').removeClass("on");
+                $('#cloth').css('margin-left','0px');                
+            }else{
+                $('#cloth').addClass('on');
+                $('#cloth').css('margin-left','-65px');
+            }
+            
+        });
+        $('.region > div').click(function(){
+            const region_list = {Seoul:[37.5666,126.9784], Incheon:[37.4563,126.70528],Gyeonggi:[37.5667,126,9783],Busan:[35.1794,129.0755],Deagu:[35.8722,128.6025],Deajeon:[36.3511,127.3850]};
+            $('#region').text($(this).text());
+            weather_display(region_list[$(this).text()][0],region_list[$(this).text()][1],$(this).text());
+            $('#region_button').trigger('click');
+        });
+
+        
+    });
+</script>
+</html>

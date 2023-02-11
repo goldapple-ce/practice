@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" 
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>TodoApp</title>
+    <style>
+        body{
+            background-color: #E3E9FF;
+            padding:64px;
+        }
+        #title{
+            background-color: #183153;
+            color:#ffff;
+            text-align: center;
+            font-size: 24px;
+            padding: 16px;
+        }
+        #list{
+            background-color:#ffff;
+            list-style:none;
+            padding: 24px;
+        }
+        #btn_add{
+            display: inline-block;
+            width: 30px;
+            height: 26px;
+            border: 2px solid #183153;
+            border-radius: 50px;
+            display: inline-flex;
+            justify-content: center;
+            padding-top: 5px;
+        }
+        .item{
+            padding: 12px;
+            font-size: 24px;
+            color: #8898B9;
+            cursor: pointer;
+        }
+        .icon{
+            margin-right: 12px;
+        }
+        .done > .text{
+            text-decoration: line-through;
+        }
+        .done > .icon{
+            color: #183153;
+        }
+
+        input{
+            width: calc(100% - 70px);
+            height : 36px;
+            border-radius: 18px ;
+            border-color: #ffff;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3 id = "title">오늘의 할 일😀</h3>
+    <ul id="list">
+    </ul>
+    <input id="input_todo"/>
+    <div id="btn_add" ><i class="fa-solid fa-plus"></i></div>
+</body>
+
+<script>
+    $(function(){
+        $('#btn_add').click(function(){
+            let newItem = $('<li class="item"></li>');
+            let newIcon = $('<span class="icon">○</span>');
+            let newText = $('<span class="text">List 0</span>');
+
+            let task = $('#input_todo').val();
+            newText.text(task);
+            newItem.append(newIcon);
+            newItem.append(newText);
+
+            newItem.click(function(){
+                $(this).toggleClass('done');
+
+                if( $(this).hasClass('done')){
+                    $(this).find('.icon').text('●');
+                }else{
+                    $(this).find('.icon').text('○');
+                }
+            });
+            $('#list').append(newItem);
+        });
+
+    });
+</script>
+</html>

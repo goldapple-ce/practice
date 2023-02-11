@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <style>
+        #dot{
+            position: absolute;
+            width:16px;
+            height: 16px;
+            border-radius: 8px;
+            background-color: red;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Position Test</h1>
+    <ul id="list">
+        <li class="item">
+            <span>Position 0</span>
+        </li>
+        <li class="item">
+            <span>Position 1 - Long</span>
+        </li>
+        <li class="item">
+            <span>Position 2<br>- Linebreak</span>
+        </li>
+    </ul>
+    <div id="dot"></div>
+</body>
+
+<script>
+    $(document).ready(function(){
+        let left = $('#list>li').eq(0).offset().left;
+        let top = $('#list>li').eq(0).offset().top;
+        let width = $('#list > li').eq(0).find('span').width();
+        let height = $('#list > li').eq(0).find('span').height();
+        let circle_height = $('#dot').height();
+
+        console.log("left :" + left, "top : "+ top,
+        "width : "+width,"height :"+height,"circle_height :"+circle_height);
+        
+        $('#dot').css('left',left+width+'px');
+        $('#dot').css('top', top +circle_height/4 +'px');
+    });
+
+</script>
+
+</html>
+

@@ -1,0 +1,351 @@
+<doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+    <style>
+        .background{
+            background-color: #132421;
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+        }
+        .a{
+            background-image: url('1.png');
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 8;
+
+        }
+        .b{
+            background-image: url('2.png');
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 7;
+        }
+        .c{
+            background-image: url('3.png');
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 6;
+        }
+        .d{
+            background-image: url('4.png');
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 5;
+        }
+        .e{
+            background-image: url('5.png');
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 4;
+        }
+        .f{
+            background-image: url('6.png');
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 3;
+        }
+        .g{
+            background-image: url('7.png');
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 2;
+        }
+        .h{
+            background-image: url('8.png');
+            position:         absolute;
+            left:             10px;
+            width:            1920px;
+            height:           1080px;
+            z-index: 1;
+        }
+        .i{
+            position:         absolute;
+            width:            1000px;
+            height:           1000px;
+            top: 0px;
+            left: 0px;        
+            z-index: 10;
+        }
+
+
+
+        .aa{
+            /* border-radius:    50%; */
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 1;
+            opacity: 0;
+            background-image: url('aa.png');
+
+        }
+        .bb{
+
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 2;
+            opacity: 0;
+            background-image: url('bb.png');
+        }
+        .cc{
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 3;
+            opacity: 0;
+            background-image: url('cc.png');
+            
+        }
+        .dd{
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 4;
+            opacity: 0;
+            background-image: url('dd.png');
+        }
+        .ee{
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 5;
+            opacity: 0;
+            background-image: url('ee.png');
+            
+        }
+        .ff{
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 6;
+            opacity: 0;
+            background-image: url('ff.png');
+        }
+        .gg{
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 7;
+            opacity: 0;
+            background-image: url('gg.png');
+        }
+        .hh{
+            position:         absolute;
+            width:            1920px;
+            height:           1080px;
+            z-index: 8;
+            opacity: 0;
+            background-color:   #132421;
+        }
+    </style>
+</head>
+<body>
+    <div class = "background"></div>
+    <div class = "a"></div>
+    <div class = "b"></div>
+    <div class = "c"></div>
+    <div class = "d"></div>
+    <div class = "e"></div>
+    <div class = "f"></div>
+    <div class = "g"></div>
+    <div class = "h"></div>
+    <div class = "i">우표라고 치고</div>
+    <div class = "aa"></div>
+    <div class = "bb"></div>
+    <div class = "cc"></div>
+    <div class = "dd"></div>
+    <div class = "ee"></div>
+    <div class = "ff"></div>
+    <div class = "gg"></div>
+    <div class = "hh"></div>
+</body>
+<script>
+    $('.i').click(function(){
+
+
+        $('.aa').delay(00)
+        .animate({
+            opacity: "1"
+            },200,
+        function(){});
+        
+        $('.bb').delay(200)
+        .animate({
+            opacity: "1"
+            },200,
+        function(){});    
+
+        $('.cc').delay(400)
+        .animate({
+            opacity: "1"
+            },200,
+        function(){});   
+
+        $('.dd').delay(600)
+        .animate({
+            opacity: "1"
+            },200,
+        function(){});   
+
+        $('.ee').delay(800)
+        .animate({
+            opacity: "1"
+            },200,
+        function(){});   
+
+        $('.ff').delay(1000)
+        .animate({
+            opacity: "1"
+            },200,
+        function(){});  
+        
+        $('.gg').delay(1200)
+        .animate({
+            opacity: "1"
+            },200,
+        function(){});   
+
+        // $('.hh').delay(350)
+        // .animate({
+        //     opacity: "1"
+        //     },500,
+        // function(){});
+        
+        // 추가 레이어 보여주기
+
+
+    
+
+        $('.a').delay(100)
+        .animate({
+            zIndex: "1",
+            opacity: 0
+            },00,
+        function(){});
+        
+        $('.b').delay(300)
+        .animate({
+            zIndex: "2"
+            },00,
+        function(){});    
+
+        $('.c').delay(500)
+        .animate({
+            zIndex: "3"
+            },00,
+        function(){});   
+
+        $('.d').delay(700)
+        .animate({
+            zIndex: "4"
+            },00,
+        function(){});   
+
+        $('.e').delay(900)
+        .animate({
+            zIndex: "5"
+            },00,
+        function(){});   
+
+        $('.f').delay(1100)
+        .animate({
+            zIndex: "6"
+            },00,
+        function(){});  
+        
+        $('.g').delay(1300)
+        .animate({
+            zIndex: "7"
+            },00,
+        function(){});   
+
+        $('.h').delay(1500)
+        .animate({
+            zIndex: "7"
+            },00,
+        function(){});   
+
+        // $('.h').delay(4000)
+        // .animate({
+        //     zIndex: "8"
+        //     },00,
+        // function(){});   
+
+        // 인덱스 역순
+
+
+
+        $('.aa').delay(100)
+        .animate({
+            opacity: "0"
+            },0,
+        function(){});
+        
+        $('.bb').delay(300)
+        .animate({
+            opacity: "0"
+            },0,
+        function(){});    
+
+        $('.cc').delay(500)
+        .animate({
+            opacity: "0"
+
+            },0,
+        function(){});   
+
+        $('.dd').delay(700)
+        .animate({
+            opacity: "0"
+            },0,
+        function(){});   
+
+        $('.ee').delay(900)
+        .animate({
+            opacity: "0"
+            },0,
+        function(){});   
+
+        $('.ff').delay(1100)
+        .animate({
+            opacity: "0"
+            },0,
+        function(){});  
+        
+        $('.gg').delay(1300)
+        .animate({
+            opacity: "0"
+            },0,
+        function(){});   
+
+        // $('.hh').delay(880)
+        // .animate({
+        //     opacity: "0"
+        //     },0,
+        // function(){});  
+        
+        // 추가 레이어 끼워넣기
+        
+    })
+
+
+</script>
+
+</html>
+

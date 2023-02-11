@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">값을 입력하세요</h1>
+    <input id="input_msg"/>
+    <button id="btn_ok">확인</button>
+    <p id="result">결과값</p>
+</body>
+
+<script>
+    $(function(){
+        $('#btn_ok').click(function(){
+            let msg = $('#input_msg').val()
+
+            $('#result').text(msg)
+        })
+    })
+</script>
+
+</html>

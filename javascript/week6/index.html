@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+    <title>Document</title>
+</head>
+<body>
+    <img id="icon"/>
+    <p id="city"></p>
+    <h1 id="weather"></h1>
+    <h2 id="temp"></h2>
+    <p id="temp_minmax"></p>
+
+    <div id="forecast"></div>
+</body>
+
+<script>
+    $(document).ready(function(){
+        let url = 'https://api.openweathermap.org/data/2.5/weather?lat=37.5667&lon=126.9783&units=metric&appid=0ab593e3259061d3bd42052d2dbaff09';
+
+        $.getJSON(url,function(data){
+            console.log(data);
+            
+            let city = data.name;
+            let weather = data.weather[0].main
+            let temp = data.main.temp;
+            let temp_max = data.main.temp_max;
+            let temp_min = data.main.temp_min;
+
+            $('#weather').text(weather);
+            $('#temp').text(temp);
+            $('#temp_minmax').text(temp_max+'/'+temp_min);
+            $('#city').text(city);
+
+            let icon = data.weather[0].icon;
+            let iconURL = 'http://openweathermap.org/img/wn/'+icon+'@2x.png';
+            $('#icon').attr('src',iconURL);
+        });
+
+        let urlF = 'https://api.openweathermap.org/data/2.5/forecast?lat=37.5667&lon=126.9783&units=metric&appid=0ab593e3259061d3bd42052d2dbaff09';
+        $.getJSON(urlF,function(data){
+            console.log(data);
+
+            for(let i in data.list){
+                let weather = data.list[i].weather[0].main;
+                let temp = data.list[i].main.temp;
+                let dt = data.list[i].dt;
+                let icon = data.list[i].weather[0].icon
+
+                let date = moment(dt*1000).format('HH:mm');
+
+
+                let dom = $('<div></div>');
+                dom.append('<br>')
+                dom.append('<img src=' + 'http://openweathermap.org/img/wn/'+ icon +'@2x.png'+'></img>')
+                dom.append('<h3>' + date + '</h3>');
+                dom.append('<p>' + weather + '</p>')
+                dom.append('<p>' + temp + '</p>');
+
+                $('#forecast').append(dom);
+            }
+        })
+    })
+</script>
+</html>

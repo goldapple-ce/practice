@@ -1,0 +1,1526 @@
+<doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <style>
+            html{
+                width:1920px;
+                height: 1080px;
+                position: fixed;
+            }
+            body{
+                background-color: #132421;
+                position: relative;
+                width: 1920px;
+                height: 1080px;
+            }
+            
+            .christmasWriting_box{
+                background-image: url('./imgs/christmasWriting.png');
+                background-repeat: no-repeat;
+                position: absolute;
+                width: 526px;
+                height: 363px;
+                top: 50vh;
+                left: 50vw;
+                transform: translate(-50%, -50%);
+            }
+            .stamp_background{
+                background-image: url('./imgs/stamp_background.png');
+                background-repeat: no-repeat;
+                width: 534px;
+                height: 603px;
+                z-index: 11;
+            }
+            .stamp_box{
+                position:absolute;
+                top: 500px;
+                right: -450px;
+                z-index: 9;
+                transition: all 0.3s ease-in-out;
+                z-index: 11;
+            }
+            .stamp_box:hover{
+                right: -300px;
+            }
+            .stampGuide{
+                background-image: url('./imgs/stampGuide.png');
+                background-repeat: no-repeat;
+                position:absolute;
+                width:180px;
+                height:280px;
+                top:80px;
+                left:80px;
+                z-index: 11;
+            }
+            .stamp_content{
+                right:-60px;
+                top:-540px;
+                margin:-15px;
+                z-index: 11;
+            }
+            .deco{
+                background-image: url('./imgs/deco.png');
+                background-repeat: no-repeat;
+                width: 230px;
+                height: 200px;
+                position: absolute;
+                top: 790px;
+                left:50px;
+                z-index: 11;
+            }
+
+            .bg{
+                position: absolute;
+                width: 2048px;
+                height: 1152px;
+                background-image: url('bg.png');
+                z-index: 10;
+                top: -10px;
+                left: -20px;
+            }
+
+            .bg2{
+                position: absolute;
+                width: 1920px;
+                height: 1080px;
+                background-image: url('bg2.png');
+                z-index: 10;
+                top: 0;
+                left: 0;
+            }
+            .paper_box{
+                opacity: 0;
+            }
+            .out_box{
+                width:230px;
+                z-index: 11;
+            }
+
+            .stamp1{          
+                position: absolute;      
+                opacity: 0;
+            }
+
+            .stamp2{
+                opacity: 0;
+            }
+
+            .stamp3{
+                opacity: 0;
+            }
+            .stamp4{
+                opacity: 0;
+            }
+
+/*==================================== 배경 관련 ==============================*/
+            .a{
+                background-image: url('./stamp1/a.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 8;
+    
+            }
+            .b{
+                background-image: url('./stamp1/b.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 7;
+            }
+            .c{
+                background-image: url('./stamp1/c.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 6;
+                 
+            }
+            .d{
+                background-image: url('./stamp1/d.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 5;
+                 
+            }
+            .e{
+                background-image: url('./stamp1/e.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 4;
+                 
+            }
+            .f{
+                background-image: url('./stamp1/f.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 3;
+                 
+            }
+            .g{
+                background-image: url('./stamp1/g.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 2;
+            }
+            .h{
+                background-image: url('./stamp1/h.png');
+                position:         absolute;
+                width:            1920px;
+                height:           1080px;
+                z-index: 1;
+                 
+            }
+/*==================================== 배경 관련 마침 ==============================*/
+
+/*==================================== concept1 관련 ==============================*/
+            .c1_cloud1{
+                position: absolute;
+                background-image: url('./stamp1/cloud.png');
+                width:            520px;
+                height:           545px;
+                z-index: 9;
+                top: 270px;
+                left: 704px;
+            }
+            .c1_cloud2{
+                position: absolute;
+                background-image: url('./stamp1/cloud2.png');
+                width:            521px;
+                height:           545px;
+                z-index: 10;
+                top: 270px;
+                left: 704px;
+            }
+            .c1_center{
+                position: absolute;
+                background-image: url('./stamp1/center.png');
+                width:            378px;
+                height:           378px;
+                top: 635px;
+                left: 964px;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+            }
+            .c1_center2{
+                position: absolute;
+                background-image: url('./stamp1/center2.png');
+                width:            92px;
+                height:           241px;
+                top:518px;
+                left:916px;
+                z-index: 1;
+            }
+            .c1_santa{
+                position: absolute;
+                background-image: url('./stamp1/santa.png');
+                z-index: 3;
+                width: 464px;
+                height: 900px;
+                top: 164px;  
+                left: 722px;
+                transform-origin: bottom center;
+                transform: rotate(270deg);
+            }
+            .c1_snow1{
+                position: absolute;
+                background-image: url('./stamp1/snow1.png');
+                position: absolute;
+                z-index : 3;
+                width: 93px;
+                height: 92px;
+                top: 0px;
+                left: 870px;
+            }
+            .c1_snow2{
+                position: absolute;
+                background-image: url('./stamp1/snow2.png');
+                position: absolute;
+                z-index: 4;
+                width: 40px;
+                height: 40px;
+                top: 0px;
+                left: 700px;
+            }
+            .c1_snow3{
+                position: absolute;
+                background-image: url('./stamp1/snow3.png');
+                position: absolute;
+                z-index: 2;
+                width: 56px;
+                height: 57px;
+                top: 0px;
+                left: 1000px;
+            }
+            .c1_snow4{
+                position: absolute;
+                background-image: url('./stamp1/snow4.png');
+                position: absolute;
+                z-index: 3;
+                width: 43px;
+                height: 43px;
+                top: 0px;
+                left: 1200px;
+            }
+            .c1_snow5{
+                position: absolute;
+                background-image: url('./stamp1/snow5.png');
+                position: absolute;
+                z-index: 2;
+                width: 42px;
+                height: 43px;
+                top: 0px;
+                left: 930px;
+            }
+            .c1_snow6{
+                position: absolute;
+                background-image: url('./stamp1/snow6.png');
+                position: absolute;
+                z-index: 3;
+                width: 42px;
+                height: 43px;
+                top: 0px;
+                left: 1050px;
+            }
+            .c1_snow7{
+                position: absolute;
+                background-image: url('./stamp1/snow3.png');
+                position: absolute;
+                z-index: 3;
+                width: 56px;
+                height: 57px;
+                top: 0px;
+                left: 1100px;
+            }
+            .c1_snow8{
+                position: absolute;
+                background-image: url('./stamp1/snow2.png');
+                position: absolute;
+                z-index: 6;
+                width: 40px;
+                height: 40px;
+                top: 0px;
+                left: 1160px;
+            }
+            .c1_snow9{
+                position: absolute;
+                background-image: url('./stamp1/snow2.png');
+                position: absolute;
+                z-index: 7;
+                width: 40px;
+                height: 40px;
+                top: 0px;
+                left: 740px;
+            }
+            .c1_tree1{
+                position: absolute;
+                background-image: url('./stamp1/tree.png');
+                width:  101px;
+                height: 95px;
+                top: 576px;
+                left: 725px;
+                z-index: 2;
+            }
+            .c1_tree2{
+                position: absolute;
+                background-image: url('./stamp1/tree.png');
+                width:  101px;
+                height: 95px;
+                top: 691px;
+                left: 885px;
+                z-index: 9;
+            }
+            .c1_tree3{
+                position: absolute;
+                background-image: url('./stamp1/tree3.png');
+                width:  66px;
+                height: 63px;
+                top: 618px;
+                left: 1074px;
+                z-index: 4;
+            }
+/*==================================== concept1 관련 마침 ==============================*/
+/*==================================== concept2 관련 ==============================*/
+            .c2_tree1{
+                position: absolute;
+                width: 354px;
+                height: 446px;
+                background-image: url('./stamp2/tree1.png');
+                top: 432px;
+                left: 524px;
+                z-index: 6;
+            }
+            .c2_tree2{
+                position: absolute;
+                width: 245px;
+                height: 324px;
+                background-image: url('./stamp2/tree2.png');
+                top: 508px;
+                left: 1068px;
+                z-index: 3;
+            }
+            .c2_giftbox{
+                position: absolute;
+                width: 212px;
+                height: 187px;
+                background-image: url('./stamp2/giftbox.png');
+                top: 670px;
+                left: 782px;
+                z-index: 1;
+            }
+            .c2_puppy{
+                position: absolute;
+                width: 238px;
+                height: 140px;
+                background-image: url('./stamp2/puppy.png');
+                top: 778px;
+                left: 967px;
+                z-index: 8;
+            }
+            .c2_puppybase{
+                position: absolute;
+                width: 290px;
+                height: 119px;
+                background-image: url('./stamp2/puppybase.png');
+                top: 850px;
+                left: 932px;
+                z-index: 7;
+            }
+            .c2_ear{
+                position: absolute;
+                width: 40px;
+                height: 51px;
+                background-image: url('./stamp2/ear.png');
+                top: 820px;
+                left: 952px;
+                z-index: 9;
+                transform-origin: top center;
+                transform: rotate(0deg);
+            }
+            .c2_tail{
+                position: absolute;
+                width: 124px;
+                height: 68px;
+                background-image: url('./stamp2/tail.png');
+                top: 804px;
+                left: 1158px;
+                z-index: 7;
+                transform-origin: left center;
+                transform: rotate(0deg);
+            }
+            .c2_fireplace{
+                position: absolute;
+                width: 412px;
+                height: 578px;
+                background-image: url('./stamp2/fireplace.png');
+                top: 68px;
+                left: 760px;
+                z-index: 2;
+            }
+            .c2_firetopbottom{
+                position: absolute;
+                width: 213px;
+                height: 216px;
+                background-image: url('./stamp2/firetopbottom.png');
+                top: 403px;
+                left: 856px;
+                z-index: 2;
+            }
+            .c2_bottom{
+                position: absolute;
+                width: 213px;
+                height: 216px;
+                background-image: url('./stamp2/bottom.png');
+                top: 404px;
+                left: 858px;
+                z-index: 3;
+            }
+            .c2_fire{
+                position: absolute;
+                width: 112px;
+                height: 114px;
+                background-image: url('./stamp2/fire.png');
+                top: 487px;
+                left: 907px;
+                z-index: 2;
+            }
+            .c2_sockr{
+                position: absolute;
+                width: 82px;
+                height: 107px;
+                background-image: url('./stamp2/sockr.png');
+                top: 410px;
+                left: 854px;
+                z-index: 4;
+                transform-origin: top center;
+                transform: rotate(0deg);
+            }
+            .c2_sockg{
+                position: absolute;
+                width: 82px;
+                height: 107px;
+                background-image: url('./stamp2/sockg.png');
+                top: 410px;
+                left: 994px;
+                z-index: 4;
+                transform-origin: top center;
+                transform: rotate(0deg);
+            }
+/*==================================== concept2 관련 마침 ==============================*/
+/*==================================== concept3 관련 ==============================*/
+            .c3_build1{
+                position: absolute;
+                width: 160px;
+                height: 325px;
+                background-image: url('./stamp3/build1.png');
+                top: 345px;
+                left: 593px;
+                z-index: 2;
+            }
+            .c3_build2{
+                position: absolute;
+                width: 84px;
+                height: 144px;
+                background-image: url('./stamp3/build2.png');
+                top: 345px;
+                left: 742px;
+                z-index: 1;
+            }
+            .c3_build3{
+                position: absolute;
+                width: 109px;
+                height: 99px;
+                background-image: url('./stamp3/build3.png');
+                top: 391px;
+                left: 840px;
+                z-index: 1;
+            }
+            .c3_car{
+                position: absolute;
+                width: 588px;
+                height: 343px;
+                background-image: url('./stamp3/car.png');
+                top: 475px;
+                left: 592px;
+                z-index: 5;
+            }
+            .c3_sun_glause{
+                position: absolute;
+                width: 152px;
+                height: 148px;
+                background-image: url('./stamp3/sun_glause.png');
+                top: 489px;
+                left: 701px;
+                z-index: 4;
+            }
+            .c3_sun_glause{
+                position: absolute;
+                width: 152px;
+                height: 148px;
+                background-image: url('./stamp3/sun_glause.png');
+                top: 489px;
+                left: 701px;
+                z-index: 4;
+            }
+            .c3_sun_dolph{
+                position: absolute;
+                width: 127px;
+                height: 202px;
+                background-image: url('./stamp3/sun_dolph.png');
+                top: 484px;
+                left: 877px;
+                z-index: 4;
+            }
+            .c3_sun_dolph{
+                position: absolute;
+                width: 127px;
+                height: 202px;
+                background-image: url('./stamp3/sun_dolph.png');
+                top: 484px;
+                left: 877px;
+                z-index: 4;
+            }
+            .c3_carchair{
+                position: absolute;
+                width: 311px;
+                height: 78px;
+                background-image: url('./stamp3/carchair.png');
+                top: 598px;
+                left: 704px;
+                z-index: 3;
+            }
+            .c3_road{
+                position: absolute;
+                width: 680px;
+                height: 500px;
+                background-image: url('./stamp3/road.png');
+                top: 480px;
+                left: 644px;
+                z-index: 1;
+            }
+            .c3_roadsnow{
+                position: absolute;
+                width: 340px;
+                height: 500px;
+                background-image: url('./stamp3/roadsnow.png');
+                top: 468px;
+                left: 609px;
+                z-index: 2;
+            }
+            .c3_tire{
+                position: absolute;
+                width: 92px;
+                height: 113px;
+                background-image: url('./stamp3/tire.png');
+                top: 781px;
+                left: 1018px;
+                z-index: 4;
+            }
+            .c3_tire2{
+                position: absolute;
+                width: 92px;
+                height: 113px;
+                background-image: url('./stamp3/tire.png');
+                top: 781px;
+                left: 630px;
+                z-index: 4;
+            }
+            .c3_boxes{
+                position: absolute;
+                width: 258px;
+                height: 200px;
+                background-image: url('./stamp3/boxes.png');
+                top: 440px;
+                left: 745px;
+                z-index: 2;
+            }
+            .c3_pbox1{
+                position: absolute;
+                width: 100px;
+                height: 120px;
+                background-image: url('./stamp3/pbox.png');
+                top: 585px;
+                left: 965px;
+                z-index: 2;
+               
+            }
+            .c3_pbox2{
+                position: absolute;
+                width: 100px;
+                height: 120px;
+                background-image: url('./stamp3/pbox.png');
+                top: 585px;
+                left: 965px;
+                z-index: 2;
+            }
+            .c3_pbox3{
+                position: absolute;
+                width: 100px;
+                height: 120px;
+                background-image: url('./stamp3/pbox.png');
+                top: 585px;
+                left: 740px;
+                z-index: 3;
+            }
+            .c3_pbox4{
+                position: absolute;
+                width: 100px;
+                height: 120px;
+                background-image: url('./stamp3/pbox.png');
+                top: 585px;
+                left: 740px;
+                z-index: 3;
+            }
+            .c3_pbox5{
+                position: absolute;
+                width: 100px;
+                height: 120px;
+                background-image: url('./stamp3/pbox.png');
+                top: 585px;
+                left: 740px;
+                z-index: 3;
+            }
+            .c3_pbox6{
+                position: absolute;
+                width: 100px;
+                height: 120px;
+                background-image: url('./stamp3/pbox.png');
+                top: 585px;
+                left: 740px;
+                z-index: 3;
+            }
+            @keyframes bounce{
+                0%{
+                    top: 480px;
+                }
+                70%{
+                    top: 500px;
+                }
+                100%{
+                    top: 480px;
+                }
+            }
+            @keyframes bounce2{
+                0%{top: 450px;}
+                70%{top: 470px;}
+                100%{top: 450px;}
+            }
+            @keyframes pbox-1 {
+            0% {transform:translateX(0) translateY(0) scale(2) rotateZ(0)}
+            50% {transform:translateX(70px) translateY(-280px) scale(0.25) rotateZ(-540deg) }
+            100% {transform:translateX(0) translateY(-540px) scale(0) rotateZ(0) }
+            }
+            @keyframes pbox-2 {
+            0% {transform:translateX(0) translateY(0) scale(2) rotateZ(0)}
+            70% {transform:translateX(270px) translateY(-280px) scale(0.25) rotateZ(-570deg) }
+            100% {transform:translateX(270px) translateY(-280px) scale(0) rotateZ(0) }
+            }
+            @keyframes pbox-3 {
+            0% {transform:translateX(0) translateY(0) scale(2) rotateZ(0)}
+            70% {transform:translateX(-270px) translateY(-100px) scale(0.25) rotateZ(570deg) }
+            100% {transform:translateX(-270px) translateY(-100px) scale(0) rotateZ(0) }
+            }
+            @keyframes pbox-4 {
+            0% {transform:translateX(0) translateY(0) scale(2) rotateZ(0)}
+            70% {transform:translateX(0) translateY(-450px) scale(0.5) rotateZ(-270deg) }
+            100% {transform:translateX(0) translateY(-450px) scale(0) rotateZ(0) }
+            }
+            
+/*==================================== concept3 관련 마침 ==============================*/
+/*==================================== concept4 관련 ==============================*/
+            .c4_man{
+                position: absolute;
+                width: 124px;
+                height: 308px;
+                background-image: url('./stamp4/man.png');
+                top: 538px;
+                left: 608px;
+                z-index: 5;
+            }
+            .c4_crosswalk{
+                position: absolute;
+                width: 538px;
+                height: 187px;
+                background-image: url('./stamp4/crosswalk.png');
+                top: 708px;
+                left: 780px;
+                z-index: 2;
+            }
+            .c4_base{
+                position: absolute;
+                width: 421px;
+                height: 146px;
+                background-image: url('./stamp4/base.png');
+                top: 664px;
+                left: 980px;
+                z-index: 2;
+            }
+            .c4_insidewoman{
+                position: absolute;
+                width: 185px;
+                height: 184px;
+                background-image: url('./stamp4/insidewoman.png');
+                top: 522px;
+                left: 1080px;
+                z-index: 2;
+            }
+            .c4_house{
+                position: absolute;
+                width: 373px;
+                height: 307px;
+                background-image: url('./stamp4/house.png');
+                top: 450px;
+                left: 1036px;
+                z-index: 2;
+            }
+            .c4_streetlamp1{
+                position: absolute;
+                width: 395px;
+                height: 928px;
+                background-image: url('./stamp4/streetlamp1.png');
+                top: 268px;
+                left: 420px;
+                z-index: 4;
+                transform-origin: top center;
+                transform: rotate(0deg);
+            }
+            .c4_streetlamp2{
+                position: absolute;
+                width: 46px;
+                height: 259px;
+                background-image: url('./stamp4/streetlamp2.png');
+                top: 472px;
+                left: 982px;
+                z-index: 1;
+            }
+            .c4_head{
+                position: absolute;
+                width: 31px;
+                height: 17px;
+                background-image: url('./stamp4/head.png');
+                top: 495px;
+                left: 1010px;
+                z-index: 1;
+                transform-origin: top center;
+                transform: rotate(0deg);
+            }
+            .c4_light{
+                position: absolute;
+                width: 399px;
+                height: 391px;
+                background-image: url('./stamp4/light.png');
+                top: 502px;
+                left: 818px;
+                z-index: 4;
+                transform-origin: top center;
+                transform: rotate(0deg);
+                /* background-size: cover;
+                background-size: no-repeat; */
+            }
+            
+
+/*==================================== concept4 관련 마침 ==============================*/
+
+/*==================================== 재생바 관련 ==============================*/
+            #s-area, #seek-bar
+            {
+                position: relative;
+                height: 3px;
+            }
+
+            #s-area{
+                background-color:#fff;
+                cursor: pointer;
+                top: 420px;
+                z-index: 11;
+                width: 350px;
+                opacity: 0;
+            }
+
+            #ins-time{
+                position: absolute;
+                top: -29px;
+                color: #fff;
+                font-size: 12px;
+                white-space: pre;
+                padding: 5px 6px;
+                border-radius: 4px;
+                display:none;
+                background-color: #3b3d50;
+            }
+
+            #seek-bar{
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                background-color: #9E8842;
+                transition: 0.2s ease width;
+                z-index: 1;
+            }
+
+            #current_title{
+                position: absolute;
+                font-family: 'Amatic SC', 'cursive';
+                font-size:32px;
+
+                background:linear-gradient(to right,#DFD2AE,#9E8842);
+                color: transparent;
+                background-clip: text;
+                -webkit-background-clip: text;
+                z-index: 11;
+            }
+            .marquee {
+                top:35%;
+                left:2%;
+                height: 35px;
+                width: 300px;
+              
+                overflow: hidden;
+                position: relative;
+                z-index: 12;
+              }
+              
+            .marquee div {
+                display: block;
+                width: 400%;
+                height: 35px;
+                position: absolute;
+                overflow: hidden;
+              
+                animation: marquee 10s linear infinite;
+            }
+
+            .marquee span{
+                float: left;
+            }
+              
+            @keyframes marquee {
+                0% { left: 200%; }
+                100% { left: -200%; }
+            }
+/*==================================== 재생바 관련 마침==============================*/
+        </style>
+    </head>
+    <body>
+        <div class="stampGuide"></div>
+        <div class = "bg"></div>
+        <div class = "bg2"></div>
+
+        <div class="christmasWriting_box"></div>
+
+
+        <div class="marquee">
+            <div>
+              <span id="current_title"></span>
+            </div>
+        </div>
+        <div id="s-area">
+            <div id="ins-time"></div>
+            <div id="s-hover"></div>
+            <div id="seek-bar"></div>
+        </div>
+
+        <div class = "paper_box">
+            <div class = "paper_box a"></div>
+            <div class = "paper_box b"></div>
+            <div class = "paper_box c"></div>
+            <div class = "paper_box d"></div>
+            <div class = "paper_box e"></div>
+            <div class = "paper_box f"></div>
+            <div class = "paper_box g"></div>
+            <div class = "paper_box h"></div>
+            <div class = "paper_box i"></div>
+        </div>
+
+        <div class="stamp1">
+            <div class="c1_cloud1"></div>
+            <div class="c1_cloud2"></div>
+            <div class="c1_center"></div>
+            <div class="c1_center2"></div>
+            <div class="c1_santa"></div>
+            <div class="c1_snow1"></div>
+            <div class="c1_snow2"></div>
+            <div class="c1_snow3"></div>
+            <div class="c1_snow4"></div>
+            <div class="c1_snow5"></div>
+            <div class="c1_snow6"></div>
+            <div class="c1_snow7"></div>
+            <div class="c1_snow8"></div>
+            <div class="c1_snow9"></div>
+            <div class="c1_tree1"></div>
+            <div class="c1_tree2"></div>
+            <div class="c1_tree3"></div>
+        </div>
+
+        <div class="stamp2">
+            <div class="c2_tree1"></div>
+            <div class="c2_tree2"></div>
+            <div class="c2_giftbox"></div>
+            <div class="c2_puppy"></div>
+            <div class="c2_puppybase"></div>
+            <div class="c2_ear"></div>
+            <div class="c2_tail"></div>
+            <div class="c2_fireplace"></div>
+            <div class="c2_firetopbottom"></div>
+            <div class="c2_bottom"></div>
+            <div class="c2_fire"></div>
+            <div class="c2_sockr"></div>
+            <div class="c2_sockg"></div>
+        </div>
+
+        <div class="stamp3">
+            <div class="c3_build1"></div>
+            <div class="c3_build2"></div>
+            <div class="c3_build3"></div>
+            <div class="c3_car"></div>
+            <div class="c3_sun_glause"></div>
+            <div class="c3_sun_dolph"></div>
+            <div class="c3_carchair"></div>
+            <div class="c3_road"></div>
+            <div class="c3_roadsnow"></div>
+            <div class="c3_tire"></div>
+            <div class="c3_tire2"></div>
+            <div class="c3_boxes"></div>
+            <div class="c3_pbox1"></div>
+            <div class="c3_pbox2"></div>
+            <div class="c3_pbox3"></div>
+            <div class="c3_pbox4"></div>
+            <div class="c3_pbox5"></div>
+            <div class="c3_pbox6"></div>
+        </div>
+
+        <div class="stamp4">
+            <div class="c4_man"></div>
+            <div class="c4_crosswalk"></div>
+            <div class="c4_base"></div>
+            <div class="c4_insidewoman"></div>
+            <div class="c4_house"></div>
+            <div class="c4_streetlamp1"></div>
+            <div class="c4_streetlamp2"></div>
+            <div class="c4_light"></div>
+            <div class="c4_head"></div>
+            <h1 class="c4_neon" data-text="U">MO<span class="flicker-slow">N</span>O<span class="flicker-fast">T</span>ON</h1>
+        </div>
+
+        
+        <div class="stamp_box">
+            <div class="stamp_background"></div>
+            <div id="content1">
+                <img class = "stamp_content in_box" id="stamp1" src="./imgs/stamp1.png"/>
+                <img class = "stamp_content in_box" id="stamp2" src="./imgs/stamp2.png"/>
+            </div>
+            <div id="content2">
+                <img class = "stamp_content in_box" id="stamp3" src="./imgs/stamp3.png"/>
+                <img class = "stamp_content in_box" id="stamp4" src="./imgs/stamp4.png"/>
+            </div>
+        </div>
+
+        <div class="deco"></div>
+    </body>
+    <script>
+        // 재생 목록 데이터
+        let audios = [
+            {
+                audio: "./musics/we wish you a merry christmas but it's lofi.mp3",
+                title: "we wish you a merry christmas but it's lofi",
+                author: ''
+            },
+            {
+                audio: "./musics/Michael Bublé - It's Beginning To Look A Lot Like Christmas.mp3",
+                title: "It's Beginning To Look A Lot Like Christmas",
+                author: 'Bublé'
+            },
+            {
+                audio: './musics/Lil Nas X - HOLIDAY.mp3',
+                title: 'HOLIDAY',
+                author: 'Lil Nas X'
+            },
+            {
+                audio: "./musics/Wham! - Last Christmas.mp3",
+                title: 'Last Christmas',
+                author: 'Wham!'
+            }
+        ];
+        
+        $(function(){
+            let currentAudio = new Audio();
+            //스탬프들 드래그 가능
+            $(".in_box").draggable({
+                revert:"invalid",
+                cursor:"move",
+                start:function(e,ui){
+                    startDrag(e,ui)
+                }
+            });
+
+            //스탬프 가이드 내 스탬프 클릭 시
+            $('.stampGuide').click(function(){
+                const stamp = $(this).children().attr('id');
+                $('.'+stamp).animate({opacity:0},300);
+                $('#'+stamp).remove();
+                currentAudio.pause();
+                let dom = $('<img class = "stamp_content in_box" id="'+ stamp +'" src="./imgs/'+stamp+'.png" style="position: relative;"/>');
+                switch(stamp){
+                    case 'stamp1':
+                        $('#content1').prepend(dom)
+                        dom.draggable({
+                            revert:"invalid",
+                            cursor:"move",
+                            start:function(e,ui){
+                                startDrag(e,ui)
+                            }
+                        });
+                        break;
+                    case 'stamp2':
+                        $('#content1').append(dom);
+                        dom.draggable({
+                            revert:"invalid",
+                            cursor:"move",
+                            start:function(e,ui){
+                                startDrag(e,ui)
+                            }
+                        });
+                        break;
+                    case 'stamp3':
+                        $('#content2').prepend(dom);
+                        dom.draggable({
+                            revert:"invalid",
+                            cursor:"move",
+                            start:function(e,ui){
+                                startDrag(e,ui)
+                            }
+                        });
+                        break;
+                    case 'stamp4':
+                        $('#content2').append(dom);
+                        dom.draggable({
+                            revert:"invalid",
+                            cursor:"move",
+                            start:function(e,ui){
+                                startDrag(e,ui)
+                            }
+                        });
+                        break;
+                }
+            });
+
+            //스탬프 가이드 내 스탬프 드랍 시
+            $('.stampGuide').droppable({
+                accept:".in_box",
+                drop: function(e,ui){
+                    console.log(ui.draggable[0].id);
+                    $('.stampGuide').trigger('click');
+                    //가이드 라인에 스탬프 옮기기
+                    $(ui.draggable).fadeOut(function(){
+                        $(ui.draggable).remove();
+                        $('.stampGuide').empty();
+                        $('.stampGuide').append('<img class = "stamp_content out_box" id="'+ ui.draggable[0].id +'" src="./imgs/'+ui.draggable[0].id+'.png"/>');
+                    });
+
+                    //기존 음악 정지
+                    //currentAudio.pause();
+
+                    //스탬프 음악 재생
+                    const music_index = {"stamp1" : 0,"stamp2":1,"stamp3":2,"stamp4":3};
+                    currentAudio = new Audio(audios[music_index[ui.draggable[0].id]].audio);
+                    currentAudio.play();
+
+                    //음악정보 출력
+                    $('#s-area').animate({opacity:1},300);
+                    $('#current_title').text(audios[music_index[ui.draggable[0].id]].author + ' - ' + audios[music_index[ui.draggable[0].id]].title)
+                        
+                    // //백그라운드 로테이트 시작
+                    // rotateBackground();
+
+                    //각 스탬프 별 인터렉션 시작
+                    switch(ui.draggable[0].id){
+                        case 'stamp1':
+                            concept_1Interaction();
+                            rotateBackground1();
+                            break;
+                        case 'stamp2':
+                            //$('.concept_2').animate({opacity:1},300);
+                            concept_2Interaction();
+                            rotateBackground2();
+                            break;
+                        case 'stamp3':
+                            concept_3Interaction();
+                            rotateBackground3();
+                            break;
+                        
+                        case 'stamp4':
+                            concept_4Interaction();
+                            rotateBackground4();
+                            break;
+                    }
+                }
+            });
+
+
+            //음악 재생 바 내 마우스 움직임 감지 시
+            $('#s-area').mousemove(function(event){
+                seekBarPos = $(this).offset(); 
+                seekT = event.clientX - seekBarPos.left;
+                seekLoc = currentAudio.duration * (seekT / $(this).outerWidth());
+                
+                cM = seekLoc / 60;
+                
+                ctMinutes = Math.floor(cM);
+                ctSeconds = Math.floor(seekLoc - ctMinutes * 60);
+                
+                if( (ctMinutes < 0) || (ctSeconds < 0) ) return;
+                if( (ctMinutes < 0) || (ctSeconds < 0) ) return;
+                if(ctMinutes < 10) ctMinutes = '0'+ctMinutes;
+                if(ctSeconds < 10) ctSeconds = '0'+ctSeconds;
+                    
+                if( isNaN(ctMinutes) || isNaN(ctSeconds) )$('#ins-time').text('--:--');
+                else $('#ins-time').text(ctMinutes+':'+ctSeconds);
+
+                $('#ins-time').css({'left':seekT,'margin-left':'-21px'}).fadeIn(0);
+            });
+
+            //음악 재생 바에서 나갈 시
+            $('#s-area').mouseout(hideHover);
+
+            //음악 재생 바 클릭 시
+            $('#s-area').on('click',function(){
+                currentAudio.currentTime = seekLoc;
+                $('#seek-bar').width(seekT);
+                hideHover();
+            });
+
+            //음악 재생 시
+            setInterval( function (){
+                playProgress = (currentAudio.currentTime / currentAudio.duration) * 100;
+                $('#seek-bar').width(playProgress+'%');
+            },1000);
+
+
+/*=============================================기능======================================*/
+
+            //음악 시간 표시 숨기기
+            function hideHover(){
+                $('#ins-time').text('00:00').css({'left':'0px','margin-left':'0px'}).fadeOut(0);
+            }
+
+            function changeBackgroundImg(ui){
+                $(".a").css({"background":"url(./"+ui. helper[0].id+"/a.png)"}); 	
+                $(".b").css({"background":"url(./"+ui. helper[0].id+"/b.png)"}); 	
+                $(".c").css({"background":"url(./"+ui. helper[0].id+"/c.png)"}); 	
+                $(".d").css({"background":"url(./"+ui. helper[0].id+"/d.png)"}); 	
+                $(".e").css({"background":"url(./"+ui. helper[0].id+"/e.png)"}); 
+                $(".f").css({"background":"url(./"+ui. helper[0].id+"/f.png)"}); 		
+                $(".g").css({"background":"url(./"+ui. helper[0].id+"/g.png)"}); 
+                $(".h").css({"background":"url(./"+ui. helper[0].id+"/h.png)"});
+                $(".i").css({"background":"url(./"+ui. helper[0].id+"/i.png)"});
+                $(".bg").css({"background":"url(./"+ui. helper[0].id+"/bg.png)"}); 
+                $(".bg2").css({"background":"url(./"+ui. helper[0].id+"/bg2.png)"});     
+            }
+
+            function rotateBackground1(){
+                // 종이들 rotate1
+                // $(function irotate(){
+                //     $('.i').animate({rotate:"10deg"},4000,null);
+                //     $('.i').animate({rotate:"-10deg"},4000,null,irotate);
+                // });
+                // $(function arotate(){
+                //     $('.a').animate({rotate:"-10deg"},4000,null);
+                //     $('.a').animate({rotate:"10deg"},4000,null,arotate);
+                // });
+                // $(function brotate(){
+                //     $('.b').animate({rotate:"10deg"},4000,null);
+                //     $('.b').animate({rotate:"-10deg"},4000,null,brotate);
+                // });
+                // $(function crotate(){
+                //     $('.c').animate({rotate:"-10deg"},4000,null);
+                //     $('.c').animate({rotate:"10deg"},4000,null,crotate);
+                // });
+                // $(function drotate(){
+                //     $('.d').animate({rotate:"10deg"},4000,null);
+                //     $('.d').animate({rotate:"-10deg"},4000,null,drotate);
+                // });
+                // $(function erotate(){
+                //     $('.e').animate({rotate:"-10deg"},4000,null);
+                //     $('.e').animate({rotate:"10deg"},4000,null,erotate);
+                // });
+
+
+                // 종이들 rotate 3
+                // $(function irotate(){
+                //         $('.i').animate({rotate:"10deg"},2000,null);
+                //         $('.i').animate({rotate:"-10deg"},2000,null,irotate);
+                // });
+                // $(function arotate(){
+                //         $('.a').delay(1000).animate({rotate:"10deg"},3000,null);
+                //         $('.a').delay(5000).animate({rotate:"-10deg"},3000,null,arotate);
+                // });
+                // $(function brotate(){
+                //         $('.b').delay(2000).animate({rotate:"10deg"},3000,null);
+                //         $('.b').delay(4000).animate({rotate:"-10deg"},3000,null,brotate);
+                // });
+                // $(function crotate(){
+                //         $('.c').delay(3000).animate({rotate:"10deg"},3000,null);
+                //         $('.c').delay(3000).animate({rotate:"-10deg"},3000,null,crotate);
+                // });
+                // $(function drotate(){
+                //         $('.d').delay(4000).animate({rotate:"10deg"},3000,null);
+                //         $('.d').delay(2000).animate({rotate:"-10deg"},3000,null,drotate);
+                // });
+                // $(function erotate(){
+                //         $('.e').delay(5000).animate({rotate:"10deg"},3000,null);
+                //         $('.e').delay(1000).animate({rotate:"-10deg"},3000,null,erotate);
+                // });
+                
+                // 종이들 로테이션 2
+                $(function irotate(){
+                    $('.i').animate({rotate:"10deg"},4000,null);
+                    $('.i').animate({rotate:"-10deg"},4000,null,irotate);
+                });
+                $(function arotate(){
+                    $('.a').animate({rotate:"-12deg"},6000,null);
+                    $('.a').animate({rotate:"12deg"},6000,null,arotate);
+                });
+                $(function brotate(){
+                    $('.b').animate({rotate:"12deg"},6000,null);
+                    $('.b').animate({rotate:"-12deg"},6000,null,brotate);
+                });
+                $(function crotate(){
+                    $('.c').animate({rotate:"-12deg"},6000,null);
+                    $('.c').animate({rotate:"12deg"},6000,null,crotate);
+                });
+                $(function drotate(){
+                    $('.d').animate({rotate:"12deg"},6000,null);
+                    $('.d').animate({rotate:"-12deg"},6000,null,drotate);
+                });
+                $(function erotate(){
+                    $('.e').animate({rotate:"-12deg"},6000,null);
+                    $('.e').animate({rotate:"12deg"},6000,null,erotate);
+                });
+            }
+
+            function rotateBackground2(){
+                $(function irotate(){
+                    $('.i').animate({rotate:"10deg"},8000,null);
+                    $('.i').animate({rotate:"-10deg"},8000,null,irotate);
+                });
+                $(function arotate(){
+                    $('.a').animate({rotate:"-12deg"},12000,null);
+                    $('.a').animate({rotate:"12deg"},12000,null,arotate);
+                });
+                $(function brotate(){
+                    $('.b').animate({rotate:"12deg"},12000,null);
+                    $('.b').animate({rotate:"-12deg"},12000,null,brotate);
+                });
+                $(function crotate(){
+                    $('.c').animate({rotate:"-12deg"},12000,null);
+                    $('.c').animate({rotate:"12deg"},12000,null,crotate);
+                });
+                $(function drotate(){
+                    $('.d').animate({rotate:"12deg"},12000,null);
+                    $('.d').animate({rotate:"-12deg"},12000,null,drotate);
+                });
+                $(function erotate(){
+                    $('.e').animate({rotate:"-12deg"},12000,null);
+                    $('.e').animate({rotate:"12deg"},12000,null,erotate);
+                });
+            }
+            function rotateBackground3(){
+                $(function irotate(){
+                    $('.i').animate({rotate:"10deg"},2000,null);
+                    $('.i').animate({rotate:"-10deg"},2000,null,irotate);
+                });
+                $(function arotate(){
+                    $('.a').animate({rotate:"12deg"},3000,null);
+                    $('.a').animate({rotate:"-12deg"},3000,null,arotate);
+                });
+                $(function brotate(){
+                    $('.b').animate({rotate:"6deg"},3000,null);
+                    $('.b').animate({rotate:"-6deg"},3000,null,brotate);
+                });
+                $(function crotate(){
+                    $('.c').animate({rotate:"-6deg"},3000,null);
+                    $('.c').animate({rotate:"6deg"},3000,null,crotate);
+                });
+                $(function drotate(){
+                    $('.d').animate({rotate:"6deg"},3000,null);
+                    $('.d').animate({rotate:"-6deg"},3000,null,drotate);
+                });
+                $(function erotate(){
+                    $('.e').animate({rotate:"-6deg"},3000,null);
+                    $('.e').animate({rotate:"6deg"},3000,null,erotate);
+                });
+            
+            }
+            function rotateBackground4(){
+                $(function irotate(){
+                    $('.i').animate({rotate:"10deg"},8000,null);
+                    $('.i').animate({rotate:"-10deg"},8000,null,irotate);
+                });
+                $(function arotate(){
+                    $('.a').animate({rotate:"12deg"},12000,null);
+                    $('.a').animate({rotate:"-12deg"},12000,null,arotate);
+                });
+                $(function brotate(){
+                    $('.b').animate({rotate:"6deg"},12000,null);
+                    $('.b').animate({rotate:"-6deg"},12000,null,brotate);
+                });
+                $(function crotate(){
+                    $('.c').animate({rotate:"-6deg"},12000,null);
+                    $('.c').animate({rotate:"6deg"},12000,null,crotate);
+                });
+                $(function drotate(){
+                    $('.d').animate({rotate:"6deg"},12000,null);
+                    $('.d').animate({rotate:"-6deg"},12000,null,drotate);
+                });
+                $(function erotate(){
+                    $('.e').animate({rotate:"-6deg"},12000,null);
+                    $('.e').animate({rotate:"6deg"},12000,null,erotate);
+                });
+            
+            }
+
+
+            // stamp1 인터렉션
+            function concept_1Interaction(){
+                $(function snowfall1(){
+                    $('.c1_snow1').animate({top:690,rotate:"270deg"},8000,null);
+                    $('.c1_snow1').animate({top:00,rotate:"-270deg"},00,null,snowfall1);
+                });
+                $(function snowfall2(){
+                    $('.c1_snow2').animate({top:1090,rotate:"360deg"},10000,null);
+                    $('.c1_snow2').animate({top:00,rotate:"-360deg"},00,null,snowfall2);
+                });
+                $(function snowfall3(){
+                    $('.c1_snow3').animate({top:690,rotate:"360deg"},20000,null);
+                    $('.c1_snow3').animate({top:00,rotate:"-360deg"},00,null,snowfall3);
+                });
+                $(function snowfall4(){
+                    $('.c1_snow4').animate({top:1000,rotate:"180deg"},13000,null);
+                    $('.c1_snow4').animate({top:00,rotate:"-180deg"},00,null,snowfall4);
+                });
+                $(function snowfall5(){
+                    $('.c1_snow5').animate({top:700,rotate:"180deg"},15000,null);
+                    $('.c1_snow5').animate({top:00,rotate:"-180deg"},00,null,snowfall5);
+                });
+                $(function snowfall6(){
+                    $('.c1_snow6').animate({top:700,rotate:"270deg"},10000,null);
+                    $('.c1_snow6').animate({top:00,rotate:"-270deg"},00,null,snowfall6);
+                });
+                $(function snowfall7(){
+                    $('.c1_snow7').animate({top:700,rotate:"360deg"},11000,null);
+                    $('.c1_snow7').animate({top:00,rotate:"-360deg"},00,null,snowfall7);
+                });
+                $(function snowfall8(){
+                    $('.c1_snow8').animate({top:1000,rotate:"-200deg"},12000,null);
+                    $('.c1_snow8').animate({top:00,rotate:"200deg"},00,null,snowfall8);
+                });
+                $(function snowfall9(){
+                    $('.c1_snow9').animate({top:700,rotate:"-360deg"},12000,null);
+                    $('.c1_snow9').animate({top:00,rotate:"360deg"},00,null,snowfall9);
+                });
+                $(function santarotate(){
+                    $('.c1_santa').animate({rotate:"360deg"},30000,null);
+                    $('.c1_santa').animate({rotate:"-360deg"},00,null,santarotate);
+                });
+            }
+
+            //stamp2 인터렉션
+            function concept_2Interaction(){
+                $(function sockrrotate(){
+                    $('.c2_sockr').animate({rotate:"12deg"},3000,null);
+                    $('.c2_sockr').animate({rotate:"-12deg"},3000,null,sockrrotate);
+                });
+                $(function sockgrotate(){
+                    $('.c2_sockg').animate({rotate:"10deg"},2500,null);
+                    $('.c2_sockg').animate({rotate:"-10deg"},2500,null,sockgrotate);
+                });
+                $(function tail(){
+                    $('.c2_tail').animate({rotate:"10deg"},2500,null);
+                    $('.c2_tail').animate({rotate:"-10deg"},2500,null,tail);
+                });
+                $(function ear(){
+                    $('.c2_ear').delay(3000).animate({rotate:"8deg"},2000,null);
+                    $('.c2_ear').delay(3000).animate({rotate:"-8deg"},2000,null,ear);
+                });
+            }
+
+            
+            //stamp3 인터렉션
+            function concept_3Interaction(){
+                $(function (){
+                    $('.c3_car').css({
+                        "animation-timing-function": "linear",
+                        "animation-name" : "bounce",
+                        "animation-duration" : "1s",
+                        "animation-iteration-count" : "infinite",
+                        "animation-direction" : "alternate",
+                        "animation-delay" : "9s"
+                    });
+                });
+                $(function (){
+                    $('.c3_sun_glause,.c3_sun_dolph,.c3_boxes').css({
+                        "animation-timing-function": "swing",
+                        "animation-name" : "bounce",
+                        "animation-duration" : "1s",
+                        "animation-iteration-count" : "infinite",
+                        "animation-direction" : "alternate",
+                        "animation-delay" : "9s"
+                    });
+                });
+                $(function (){
+                    $('.c3_boxes').css({
+                        "animation-timing-function": "swing",
+                        "animation-name" : "bounce2",
+                        "animation-duration" : "1s",
+                        "animation-iteration-count" : "infinite",
+                        "animation-direction" : "alternate",
+                        "animation-delay" : "9.5s"
+                    });
+                });
+                $(function (){
+                    $('.c3_pbox1').css({
+                        "animation-name":"pbox-1",
+                        "animation-duration" : "5s",
+                        "animation-iteration-count" : "infinite",
+                        "animation-timing-function": "cubic-bezier(0.415, 0.547, 0, 0.809)",
+                        "animation-delay" : "10.5s"
+                    });
+                });
+                $(function (){
+                    $('.c3_pbox2').css({
+                        "animation-name":"pbox-2",
+                        "animation-duration" : "5s",
+                        "animation-iteration-count" : "infinite",
+                        "animation-timing-function": "cubic-bezier(0.415, 0.547, 0, 0.809)",
+                        "animation-delay" : "10.5s"
+                    });
+                });
+                $(function (){
+                    $('.c3_pbox3').css({
+                        "animation-name":"pbox-3",
+                        "animation-duration" : "5s",
+                        "animation-iteration-count" : "infinite",
+                        "animation-timing-function": "cubic-bezier(0.415, 0.547, 0, 0.809)",
+                        "animation-delay" : "10.5s"
+                    });
+                });
+                $(function (){
+                    $('.c3_pbox4').css({
+                        "animation-name":"pbox-4",
+                        "animation-duration" : "5s",
+                        "animation-iteration-count" : "infinite",
+                        "animation-timing-function": "cubic-bezier(0.415, 0.547, 0, 0.809)",
+                        "animation-delay" : "10.5s"
+                    });
+                });
+                
+            }
+
+            //stamp4 인터렉션
+            function concept_4Interaction(){
+                $(function head(){
+                        $('.c4_head').delay(3000).animate({rotate:"8deg"},20000,null);
+                        $('.c4_head').delay(3000).animate({rotate:"-8deg"},20000,null,head);
+                    });
+                    $(function light(){
+                        $('.c4_light').delay(3000).animate({rotate:"8deg"},12000,null);
+                        $('.c4_light').delay(3000).animate({rotate:"-8deg"},12000,null,light);
+                    });
+                    $(function lamp1(){
+                        $('.c4_streetlamp1').delay(3000).animate({rotate:"-10deg"},12000,null);
+                        $('.c4_streetlamp1').delay(3000).animate({rotate:"10deg"},12000,null,lamp1);
+                    });
+
+            }
+
+
+            function startDrag(e,ui){
+                $('.stamp1').delay(300).animate({opacity:0},300);
+                $('.stamp2').delay(300).animate({opacity:0},300);
+                $('.stamp3').delay(300).animate({opacity:0},300);
+                $('.stamp4').delay(300).animate({opacity:0},300);
+
+
+                changeBackgroundImg(ui);
+                $('.christmasWriting_box').fadeOut(300);
+                $('.paper_box').delay(300).animate({opacity:1},300);
+                $('.'+ui.helper[0].id).delay(600).animate({opacity:1},300);
+            }
+        });
+    </script>
+
+    </html>
+</doctype>
