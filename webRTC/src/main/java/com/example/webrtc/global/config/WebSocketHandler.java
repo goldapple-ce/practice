@@ -17,13 +17,8 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class WebSocketHandler extends TextWebSocketHandler {
-//    List<WebSocketSession> sessions = new CopyOnWriteArrayList<>();
     private final ObjectMapper mapper;
     private final ChatService chatService;
-
-//    public void afterConnectionEstablished(WebSocketSession session){
-//        sessions.add(session);
-//    }
 
 
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws IOException {
